@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:turismoapp/utils/colors.dart';
+import 'package:turismoapp/widgets/customAlert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,17 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error de inicio de sesión'),
-            content: const Text('El correo electrónico o la contraseña son incorrectos.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cerrar'),
-              ),
-            ],
+          return CustomAlert(
+            title: 'Error de inicio de sesión',
+            subtitle: 'El correo electrónico o la contraseña son incorrectos.',
+            imagePath:'assets/images/Warning.png', 
+            color: colorDanger, 
           );
         },
       );
@@ -71,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+              decoration:
+                  const InputDecoration(labelText: 'Correo Electrónico'),
             ),
             TextField(
               controller: passwordController,
