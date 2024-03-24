@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF303030),
+      backgroundColor: const Color(0xFF303030),
       body: Center(  
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,12 +41,12 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 350, 
               height: 300, 
             ),
-            SizedBox(height: 20),
-            CircularProgressIndicator(
+            const SizedBox(height: 20),
+            const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Cargando...',
               style: TextStyle(
                 color: Colors.white,

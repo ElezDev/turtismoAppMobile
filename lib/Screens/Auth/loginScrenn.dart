@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:turismoapp/services/loginService.dart';
+import 'package:turismoapp/utils/colos.dart';
+import 'package:turismoapp/widgets/CustomButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,78 +13,101 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
 
   Future<void> _login() async {
-    const String apiUrl = 'http://192.168.101.9:8000/api/login_user';
-    final Map<String, String> data = {
-      'email': emailController.text,
-      'password': passwordController.text,
-    };
-
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      body: data,
-    );
-
-    if (response.statusCode == 200) {
-      Map<String, dynamic> responseData = json.decode(response.body);
-      String token = responseData['token'];
-      await saveToken(token);
-      Navigator.pushReplacementNamed(context, '/home');
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error de inicio de sesión'),
-            content: const Text('El correo electrónico o la contraseña son incorrectos.'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cerrar'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
-  Future<void> saveToken(String token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
+    await _authService.login(
+        emailController.text, passwordController.text, context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Inicio de Sesión'),
-      ),
+      backgroundColor: colorPrincipal,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            _header(context),
+            const SizedBox(
+              height: 20,
+            ), //
             TextField(
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w300,
+              ),
+              autocorrect: true,
+              cursorColor: colorTertiario,
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Correo Electrónico'),
+              decoration: InputDecoration(
+                hoverColor: colorTertiario,
+                labelText: 'Email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                prefixIcon: const Icon(Icons.person),
+                // labelStyle: TextStyle(color: colorSecundario),
+              ),
             ),
+
+            const SizedBox(height: 16),
             TextField(
-              controller: passwordController,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w300,
+              ),
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Contraseña'),
+              autocorrect: true,
+              cursorColor: colorTertiario,
+              controller: passwordController,
+              decoration: InputDecoration(
+                hoverColor: colorTertiario,
+                labelText: 'Password',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                prefixIcon: const Icon(Icons.password),
+                // labelStyle: const TextStyle(color: colorTertiario),
+              ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _login,
-              child: const Text('Iniciar Sesión'),
+
+            const SizedBox(
+              height: 20,
             ),
+            SizedBox(
+              width: 250,
+              child: CustomButton(
+                text: 'Login',
+                onPressed: _login,
+                backgroundColor: colorSecundario,
+              ),
+            )
           ],
         ),
       ),
+    );
+  }
+
+  _header(context) {
+    return const Column(
+      children: [
+        Text(
+          "Welcome Back",
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: colorSecundario,
+          ),
+        ),
+        Text(
+          "Enter your credential to login",
+          style: TextStyle(
+            color: colorTertiario,
+          ),
+        ),
+      ],
     );
   }
 }

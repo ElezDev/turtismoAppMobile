@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turismoapp/Screens/Splash/splashScreen.dart';
+import 'package:turismoapp/Screens/User/userScreen.dart';
 import 'package:turismoapp/utils/colos.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,10 +13,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home'),
-    Text('Index 1: Profile'),
-    Text('Index 2: Settings'),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const Text('Index 0: Home'),
+    const Text('Index 1: Profile'),
+       UserScreen() 
   ];
 
   void _onItemTapped(int index) {
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
   }
+
 
   Future<void> _logout() async {
     await logout();
@@ -32,21 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
  Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: colorSecundario,
-    appBar: AppBar(
-      title: const Text('Home Screen'),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.logout),
-          onPressed: _logout,
-        ),
-      ],
-    ),
+  
     body: Center(
       child: _widgetOptions.elementAt(_selectedIndex),
     ),
     bottomNavigationBar: Container(
-      color: Colors.transparent,
+      color: colorPrincipal,
       height: 100,
       padding: const EdgeInsets.all(12),
       child: BottomNavigationBar(
