@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turismoapp/Screens/Splash/splashScreen.dart';
 import 'package:turismoapp/Screens/User/userScreen.dart';
+import 'package:turismoapp/services/userService.dart';
 import 'package:turismoapp/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = <Widget>[
     const Text('Index 0: Home'),
     const Text('Index 1: Profile'),
-       UserScreen() 
+        UserScreen() 
   ];
 
   void _onItemTapped(int index) {
@@ -34,12 +35,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
  Widget build(BuildContext context) {
   return Scaffold(
-  
+    backgroundColor: colorSecundario,
+    appBar: AppBar(
+      title: const Text('Home Screen'),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: _logout,
+        ),
+      ],
+    ),
     body: Center(
       child: _widgetOptions.elementAt(_selectedIndex),
     ),
     bottomNavigationBar: Container(
-      color: colorPrincipal,
+      color: Colors.transparent,
       height: 100,
       padding: const EdgeInsets.all(12),
       child: BottomNavigationBar(

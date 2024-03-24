@@ -58,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           SizedBox(height: 20),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: colorTertiario,
+              backgroundColor: colorTertiario,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
