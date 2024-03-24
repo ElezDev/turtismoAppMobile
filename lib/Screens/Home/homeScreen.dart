@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turismoapp/Screens/Splash/splashScreen.dart';
 import 'package:turismoapp/Screens/User/userScreen.dart';
-import 'package:turismoapp/utils/colos.dart';
+import 'package:turismoapp/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

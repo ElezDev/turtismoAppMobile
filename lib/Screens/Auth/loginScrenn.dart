@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turismoapp/services/loginService.dart';
-import 'package:turismoapp/utils/colos.dart';
+import 'package:turismoapp/utils/colors.dart';
 import 'package:turismoapp/widgets/CustomButton.dart';
 
 class LoginScreen extends StatefulWidget {

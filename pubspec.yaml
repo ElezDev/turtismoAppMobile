@@ -42,17 +42,17 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
+ # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
+# The following section is specific to Flutter.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -60,10 +60,62 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-
-  assets:
+  assets: 
     - assets/images/
-
+   
+  
+  fonts:
+    - family: Averta_Black_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Black_Italic.otf
+    - family: Averta_Black
+      fonts:
+        - asset: assets/fonts/Averta_Black.otf
+    - family: Averta_Bold_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Bold_Italic.otf
+    - family: Averta_Bold
+      fonts:
+        - asset: assets/fonts/Averta_Bold.otf
+    - family: Averta_Extra_Bold_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Extra_Bold_Italic.otf
+    - family: Averta_Extra_Bold
+      fonts:
+        - asset: assets/fonts/Averta_Extra_Bold.otf
+    - family: Averta_Extrathin_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Extrathin_Italic.otf
+    - family: Averta_Extrathin
+      fonts:
+        - asset: assets/fonts/Averta_Extrathin.otf
+    - family: Averta_Light_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Light_Italic.otf 
+    - family: Averta_Light
+      fonts:
+        - asset: assets/fonts/Averta_Light.otf 
+    - family: Averta_Regular_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Regular_Italic.otf    
+    - family: Averta_Semibold_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Semibold_Italic.otf   
+    - family: Averta_Semibold
+      fonts:
+        - asset: assets/fonts/Averta_Semibold.otf   
+    - family: Averta_Thin_Italic
+      fonts:
+        - asset: assets/fonts/Averta_Thin_Italic.otf  
+    - family: Averta_Thin
+      fonts:
+        - asset: assets/fonts/Averta_Thin.otf    
+    - family: Averta
+      fonts:
+        - asset: assets/fonts/Averta.otf     
+    - family: CM Sans Serif
+      fonts:
+       - asset: assets/fonts/cm_sans_serif_2012.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

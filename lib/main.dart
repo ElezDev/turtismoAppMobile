@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:turismoapp/Screens/Auth/loginScrenn.dart';
 import 'package:turismoapp/Screens/Home/homeScreen.dart';
+import 'package:turismoapp/Screens/Splash/onboarding.dart';
 import 'package:turismoapp/Screens/Splash/splashScreen.dart';
 import 'package:turismoapp/Screens/User/userScreen.dart';
-import 'package:turismoapp/utils/colos.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(), 
         '/login': (context) => const LoginScreen(), 
         '/profile': (context) => UserScreen(), 
+        '/onboarding': (context) => const OnboardingScreen(), // Ruta para el onboarding
+
       },
     );
+  
   }
 }
