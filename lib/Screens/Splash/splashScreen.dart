@@ -63,8 +63,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
 
-
-
 Future<void> logout() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.remove('token');
